@@ -1,11 +1,17 @@
+import React, { useState, useContext } from 'react';
+import {AllData} from './data'
+import {Home} from '../views/home'
+import {Home2} from '../views/home2'
 
 
 
-export const AllData =(store, setStore) => {
+export const Datoscontext = React.createContext();
 
-    return {
-        peopleloading:true,
-        fetch:(url)=>{
+
+export const Flux=()=>{
+    const [store, setStore] = useState({
+        peopleloading: true,
+        fetch: (url) => {
 
             fetch(url)
                 .then(res => res.json()
@@ -13,7 +19,7 @@ export const AllData =(store, setStore) => {
                 .then(data => {
                     console.log(data, data.results)
                     return data.results
-                   
+
                 })
                 .catch(err => console.error(err))
 
@@ -21,63 +27,60 @@ export const AllData =(store, setStore) => {
         },
 
         getpeople: () => {
-            let peoplefinal=[];
+            let peoplefinal = [];
             fetch("https://www.swapi.tech/api/people")
-                .then(res => res.json()                       
+                .then(res => res.json()
                 )
-                // .then(setStore({ ...store }))
-                .then(data =>{ console.log(data,data.results)
-                    peoplefinal=data.results.slice()   
-                    console.log(peoplefinal,"linea30- secopia la data original")                            //lista de 10 objetos {uid name url}
+                .then(data => {
+                    console.log(data, data.results)
+                    peoplefinal = data.results.slice()
+                    console.log(peoplefinal, "linea30- secopia la data original")                            //lista de 10 objetos {uid name url}
                     // setStore({ ...store, people: data.results, peopleloading: false }) 
-                     
 
-                    
+
+
 
                     peoplefinal.map(
                         (datos, indice) => { //peoplefinal[indice] = store.fetch(datos.url)
-                        
-                        
+
+
                             fetch(datos.url)
                                 .then(res => res.json()
                                 )
-                                .then(data => {   
+                                .then(data => {
                                     // console.log(data, data.result,"linea43")
-                                    peoplefinal[indice]=data.result.properties
+                                    peoplefinal[indice] = data.result.properties
                                     // setStore({ ...store, people: data.results, peopleloading: false })
-                                    console.log(peoplefinal,"46")
-                                    setStore({ ...store, people: peoplefinal, peopleloading: false });  console.log(store,"48 store")
+                                    console.log(peoplefinal, "46")
+                                    setStore({ ...store, people: peoplefinal, peopleloading: false }); console.log(store, "48 store")
                                 })
                                 .catch(err => console.error(err))
 
-                                if (indice==peoplefinal.length-1){console.log("aca vamos")}
+                            if (indice == peoplefinal.length - 1) { console.log("aca vamos") }
 
-                        
+
                         }
                     )
 
 
-                    console.log(peoplefinal,"imprimir")
-                })                              
+                    console.log(peoplefinal, "imprimir")
+                })
                 .catch(err => console.error(err))
-                
-                
-        },
-        planetaloading:true,
 
+
+        },
+        planetaloading: true,
         getplanets: () => {
 
             let planetafinal = [];
             fetch("https://www.swapi.tech/api/planets/")
                 .then(res => res.json()
-               
                 )
-               
                 .then(data => {
-                    
-                    console.log(data, data.results,"planetas")
+
+                    console.log(data, data.results, "planetas")
                     planetafinal = data.results.slice()
-                    console.log(planetafinal, "linea30- secopia la data original","planetas")                            //lista de 10 objetos {uid name url}
+                    console.log(planetafinal, "linea30- secopia la data original", "planetas")                            //lista de 10 objetos {uid name url}
                     // setStore({ ...store, people: data.results, peopleloading: false }) 
 
 
@@ -95,7 +98,7 @@ export const AllData =(store, setStore) => {
                                     planetafinal[indice] = data.result.properties
                                     // setStore({ ...store, people: data.results, peopleloading: false })
                                     console.log(planetafinal, "92", "planetas")
-                                    console.log(store,"92 store")
+                                    console.log(store, "92 store")
                                     setStore({ ...store, planetas: planetafinal, planetaloading: false })
                                 })
                                 .catch(err => console.error(err))
@@ -112,5 +115,14 @@ export const AllData =(store, setStore) => {
                 .catch(err => console.error(err))
 
         }
-    }
+    })
+
+    return(
+        <Datoscontext.Provider value={{store, actions:AllData(store,setStore)}}>
+         <Home />
+         <Home2 />
+     </Datoscontext.Provider>
+    )
+
+
 }

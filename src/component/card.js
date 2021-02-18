@@ -1,17 +1,17 @@
 import React from 'react';
 
-export const Tarjeta = () => {
-
+export const Tarjeta = (props) => {
+// console.log(props,"props")
 
     return (
         <div className="card" style={{width: "18rem"}}>
             <img src="https://fibrex.com.co/img/400X200.gif" className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title">Card title  </h5>
+                    <h5 className="card-title">{props.name}  </h5>
                     <p className="card-text">
-                    Gender:  <br />
-                    Hair Color: <br />  
-                    Eye-Color:
+                    Gender: {props.gender} <br />
+                    Hair Color: {props.hairColor} <br />  
+                    Eye-Color: {props.eyeColor}
                     </p>
                 
                    
