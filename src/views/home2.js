@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Datoscontext } from '../store/flux'
+import { Datoscontext } from '../store/context'
 
 import { Tarjeta2 } from '../component/card2'
 
@@ -26,13 +26,16 @@ export const Home2 = () => {
         <>
 
         <h1>Planetas</h1>
-        {store.planetas.map(planeta=><Tarjeta2 
+        <div className="contenedorplanetas">
+        {store.planetas2.map((planeta,indice)=><Tarjeta2 
+        id={indice}
+        key={indice}
         name={planeta.name}
         population={planeta.population}
         terrain={planeta.terrain}
 
         />        )}
-
+            </div>
 
         </>
 

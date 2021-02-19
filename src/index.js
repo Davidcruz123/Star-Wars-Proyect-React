@@ -5,16 +5,18 @@ import {Tarjeta} from './component/card';
 import {Navbar} from './views/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/navbar.css'
-import {Flux} from './store/flux'
+import './style/home.css'
+// import {Flux} from './store/context'
+
+import Layout from './layout'
 
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Navbar />
-   {/* <Tarjeta /> */}
-  <Flux />
+  
+  <Layout />
   
   </React.StrictMode>,
   document.getElementById('root')
