@@ -25,8 +25,8 @@ const insertarContext=Componente=>{
         );
 
             useEffect(() => {
-            //    estado.actions.getpeople() 
-            //    estado.actions.getplanets()
+               estado.actions.getpeople() 
+               estado.actions.getplanets()
             }, [])
 
 

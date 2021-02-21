@@ -6,11 +6,23 @@ export const getEstado = ( {getStore,getActions,setStore} ) => {
             peopleloading: true,
             planetaloading: true,
             people2:[],
-            planetas2:[]
+            planetas2:[],
+            favoritos:[]
             
         },
         actions:{
-            
+            agregarfavorito:(nombre,id,tipo)=>{
+                let nuevalista = [...getStore().favoritos]
+                nuevalista.push({nombre:nombre,id:id,tipo:tipo})
+                // console.log(nuevalista,nuevo)
+                console.log(nuevalista)
+                setStore({favoritos:nuevalista})
+            },
+            eliminarfavorito:(nombre)=>{
+                let listafavoritos = [...getStore().favoritos]
+                let nuevalista = listafavoritos.filter((elemento) =>  elemento.nombre !== nombre )
+                setStore({ favoritos: nuevalista })
+            },
             fetch: (url) => {
 
                 fetch(url)

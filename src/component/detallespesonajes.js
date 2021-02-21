@@ -6,10 +6,10 @@ export const DetallesPersonaje = (props) => {
         <div className="card detalle">
 
             <div className="row detalleLineaSuperior">
-                <div className="col-6">
-                    <img style={{ width: "350px" }} src="https://www.cinemascomics.com/wp-content/uploads/2018/11/star-wars-9-personaje-trilogia-secuelas-2019.jpg" className="card-img-top" alt="..." />
+                <div className="col-md-6">
+                    <img style={{ maxWidth: "350px" }} src="https://www.cinemascomics.com/wp-content/uploads/2018/11/star-wars-9-personaje-trilogia-secuelas-2019.jpg" className="card-img-top" alt="..." />
                 </div>
-            <div className="col-6">
+            <div className="col-md-6">
                     <div className="colderecha">
                         <h2 style={{ textAlign: "center" }}>{props.name}</h2>
                         <p style={{ textAlign: "center" }}>

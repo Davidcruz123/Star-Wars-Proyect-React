@@ -6,8 +6,8 @@ export const DetallesPlanetas = (props) => {
         <div className="card detalle">
 
             <div className="row detalleLineaSuperior">
-                <div className="col-6">
-                    <img style={{ width: "350px",marginTop:"10%" }} src="https://cnnespanol.cnn.com/wp-content/uploads/2016/07/tatooine-starwars.jpg?quality=100&strip=info" className="card-img-top" alt="..." />
+                <div className="col-6" style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
+                    <img style={{ maxWidth: "350px",marginTop:"10%" }} src="https://cnnespanol.cnn.com/wp-content/uploads/2016/07/tatooine-starwars.jpg?quality=100&strip=info" className="card-img-top" alt="..." />
                 </div>
                 <div className="col-6">
                     <div className="colderecha">

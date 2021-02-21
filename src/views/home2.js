@@ -7,19 +7,19 @@ import { Tarjeta2 } from '../component/card2'
 export const Home2 = () => {
     const { store, actions } = React.useContext(Datoscontext);
 
-    useEffect(
-        () => {
+    // useEffect(
+    //     () => {
 
-            actions.getplanets()
+    //         actions.getplanets()
 
 
-        }, [])
+    //     }, [])
 
  
      if (store.planetaloading == false ) {  //store.peopleloading==false&&
-             console.log("planetas",store.planetaloading)
+            //  console.log("planetas",store.planetaloading)
             //  console.log("people",store.peopleloading)
-            console.log(store,"store-planeta")
+            // console.log(store,"store-planeta")
 
     return (
 

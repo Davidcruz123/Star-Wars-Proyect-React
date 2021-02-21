@@ -7,13 +7,13 @@ import { Link, useParams } from "react-router-dom";
 export const Home=()=>{
 const {store,actions}=React.useContext(Datoscontext);
 
-useEffect(
-()=>{
+// useEffect(
+// ()=>{
  
-        actions.getpeople()
+//         actions.getpeople()
       
    
-},[])
+// },[])
 
   
       if (store.peopleloading == false){
@@ -24,7 +24,7 @@ useEffect(
             return ( <> <h1 style={{marginTop:"50px"}}>Characters</h1>
     <div className="contenedorpeople"   >
         {store.people2.map((person,id)=> <Tarjeta 
-        id={id.toString()}
+        id={id}
         key={id}
         name={person.name}
         gender={person.gender}

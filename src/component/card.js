@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Datoscontext } from '../store/context'
+
+
 export const Tarjeta = (props) => {
-// console.log(props,"props")
+    
+    const { store, actions } = React.useContext(Datoscontext);
+
 
     return (
         <div className="card tarjeta1" style={{width: "18rem",minWidth:"250px"}}>
@@ -17,7 +22,7 @@ export const Tarjeta = (props) => {
                 <Link to={"/character/"+props.id}>
                 <a href="#" className="btn btn-outline-primary  border-5">Learn more!</a>
                 </Link>
-                <button type="button" className="btn btn-outline-warning float-right" style={{fontSize:"2em", maxHeight:"1.2em",display:"flex",alignItems:"center"}}>   &#9825;     </button>
+                <button type="button" className="btn btn-outline-warning float-right" onClick={() => { actions.agregarfavorito(props.name, props.id,"character")}} style={{fontSize:"2em", maxHeight:"1.2em",display:"flex",alignItems:"center"}}>   &#9825;     </button>
                 </div>
         </div>
     )
